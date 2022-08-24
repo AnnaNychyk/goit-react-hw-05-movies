@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{12:function(e,t,n){},14:function(e,t,n){"use strict";n.r(t);var o=n(0),r=n.n(o),c=n(2),a=n.n(c),i=function(){return r.a.createElement("div",{style:{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center",fontSize:40,color:"#010101"}},"React homework template")};n(12);a.a.createRoot(document.getElementById("root")).render(r.a.createElement(r.a.StrictMode,null,r.a.createElement(i,null)))},3:function(e,t,n){e.exports=n(14)}},[[3,2,1]]]);
+//# sourceMappingURL=main.e4ffb5a1.chunk.js.map
