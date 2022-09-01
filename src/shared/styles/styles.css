@@ -1,7 +1,30 @@
 .goBack {
     display: block;
-    margin: 0;
+    margin: 5px;
     padding: 5px 10px;
     text-decoration: none;
     color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+
+}
+
+.goBack:hover {
+    background-color: rgb(255, 103, 103);
+    color: #fff;
+}
+
+.details {
+    display: flex;
+}
+
+.poster {
+    width: 150px;
+    height: 250px;
+}
+
+.info {
+    margin-left: 10px;
 }

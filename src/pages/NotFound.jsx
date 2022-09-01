@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const NotFound = () => {
+  const navigate = useNavigate();
+
+  const goBack = () => navigate(-1);
+
   return (
     <>
-      <Link className="goBack" to="/">
+      <button className="goBack" onClick={goBack} type="button">
         Go back
-      </Link>
+      </button>
       <h1>Page not found</h1>
     </>
   );

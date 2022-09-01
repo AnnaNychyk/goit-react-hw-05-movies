@@ -3,6 +3,7 @@ import Menu from 'components/Menu/Menu';
 import Home from 'pages/Home';
 import Movies from 'pages/Movies';
 import NotFound from 'pages/NotFound';
+import MovieDetails from './pages/MovieDetails';
 import './shared/styles/styles.css';
 
 const App = () => {
@@ -13,7 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<h1>MovieDetails</h1>}>
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<h1>Cast</h1>} />
           <Route path="reviews" element={<h1>Reviews</h1>} />
         </Route>
