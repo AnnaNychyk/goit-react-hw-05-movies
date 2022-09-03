@@ -17,14 +17,29 @@
 }
 
 .details {
+    padding-left: 10px;
+    padding-bottom: 10px;
     display: flex;
+
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5)
 }
 
 .poster {
-    width: 150px;
-    height: 250px;
+    width: 250px;
+    height: 350px;
 }
 
 .info {
     margin-left: 10px;
+    max-width: 600px;
+}
+
+.moreInfo {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.5)
+}
+
+.castReviews {
+    margin: 0;
 }

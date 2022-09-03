@@ -1,15 +1,18 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'shared/service/api';
+import noPoster from '../images/noPosterAvailable.jpg';
 
 const MovieDetails = () => {
   const [state, setState] = useState({
-    item: {},
+    items: [],
     loading: false,
     error: null,
   });
 
   const { movieId } = useParams();
+  const navigate = useNavigate();
+  const goBack = () => navigate('/');
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -25,7 +28,7 @@ const MovieDetails = () => {
         setState(prevState => {
           return {
             ...prevState,
-            item: result,
+            items: result,
           };
         });
       } catch (error) {
@@ -45,10 +48,18 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [setState, movieId]);
 
-  const navigate = useNavigate();
-  const goBack = () => navigate(-1);
-
-  const { title, poster_path, overview, genres } = state.item;
+  const {
+    title,
+    poster_path,
+    overview,
+    genres = [],
+    vote_average,
+  } = state.items;
+  const img = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : noPoster;
+  const userScore = Math.round((vote_average / 10) * 100);
+  const getGenres = genres.map(({ name }) => name).join(', ');
 
   return (
     <>
@@ -56,23 +67,29 @@ const MovieDetails = () => {
         Go back
       </button>
       <div className="details">
-        <img className="poster" src={poster_path} alt="" />
+        <img className="poster" src={img} alt="" />
         <div className="info">
           <h2>{title}</h2>
-          <p>User Score: </p>
+          <p>User Score: {userScore}%</p>
           <h3>Overview</h3>
           <p>{overview}</p>
           <h4>Genres</h4>
-          <p>{}</p>
+          <p>{getGenres}</p>
         </div>
       </div>
-      <div>
+      <div className="moreInfo">
         <p>Additional information</p>
-        <ul>
-          <li>Cast</li>
-          <li>Reviews</li>
+        <ul className="castReviews">
+          <li>
+            <Link to="/movies/movieId/cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="/movies/movieId/reviews">Reviews</Link>
+          </li>
         </ul>
       </div>
+
+      <Outlet />
     </>
   );
 };

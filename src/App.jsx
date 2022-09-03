@@ -5,6 +5,8 @@ import Movies from 'pages/Movies';
 import NotFound from 'pages/NotFound';
 import MovieDetails from './pages/MovieDetails';
 import './shared/styles/styles.css';
+import Cast from 'pages/Cast';
+import Reviews from 'pages/Reviews';
 
 const App = () => {
   return (
@@ -12,11 +14,11 @@ const App = () => {
       <Menu />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<h1>Cast</h1>} />
-          <Route path="reviews" element={<h1>Reviews</h1>} />
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
