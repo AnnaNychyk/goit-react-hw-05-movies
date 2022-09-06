@@ -55,10 +55,13 @@ const MovieDetails = () => {
     genres = [],
     vote_average,
   } = state.items;
+
   const img = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : noPoster;
+
   const userScore = Math.round((vote_average / 10) * 100);
+
   const getGenres = genres.map(({ name }) => name).join(', ');
 
   return (
@@ -81,10 +84,10 @@ const MovieDetails = () => {
         <p>Additional information</p>
         <ul className="castReviews">
           <li>
-            <Link to="/movies/movieId/cast">Cast</Link>
+            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
           </li>
           <li>
-            <Link to="/movies/movieId/reviews">Reviews</Link>
+            <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
           </li>
         </ul>
       </div>

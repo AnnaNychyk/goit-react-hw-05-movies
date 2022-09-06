@@ -16,3 +16,17 @@ export async function getMovieDetails(movieId) {
   const { data } = await axios.get(url);
   return data;
 }
+
+export async function getMovieCredits(movieId) {
+  const url = `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}&language=en-US`;
+
+  const { data } = await axios.get(url);
+  return data;
+}
+
+export async function getMovieReviews(movieId) {
+  const url = `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US&page=1`;
+
+  const { data } = await axios.get(url);
+  return data;
+}
