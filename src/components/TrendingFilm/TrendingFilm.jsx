@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { getTrendingFilms } from '../../shared/service/api';
+import MovieList from '../MovieList/MovieList';
 
 const TrendingFilms = () => {
   const [state, setState] = useState({
@@ -45,15 +45,9 @@ const TrendingFilms = () => {
 
   const { items, loading, error } = state;
 
-  const elements = items.map(({ id, title }) => (
-    <li key={id}>
-      <Link to={`/movies/${id}`}>{title}</Link>
-    </li>
-  ));
-
   return (
     <>
-      <ul>{elements}</ul>
+      {items.length > 0 && <MovieList items={items} />}
       {loading && <p>...load films</p>}
       {error && <p>...Films load failed</p>}
     </>

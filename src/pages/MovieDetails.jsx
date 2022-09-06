@@ -12,7 +12,7 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
   const navigate = useNavigate();
-  const goBack = () => navigate('/');
+  const goBack = () => navigate(-1);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {

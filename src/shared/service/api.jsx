@@ -30,3 +30,10 @@ export async function getMovieReviews(movieId) {
   const { data } = await axios.get(url);
   return data;
 }
+
+export async function getSearchMovies(query) {
+  const url = `${BASE_URL}/search/movie?api_key=${KEY}&query=${query}&language=en-US&page=1&include_adult=false`;
+
+  const { data } = await axios.get(url);
+  return data;
+}
