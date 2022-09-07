@@ -1,4 +1,10 @@
-import { Link, useParams, useNavigate, Outlet } from 'react-router-dom';
+import {
+  Link,
+  useParams,
+  useNavigate,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'shared/service/api';
 import noPoster from '../images/noPosterAvailable.jpg';
@@ -12,7 +18,9 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
   const navigate = useNavigate();
-  const goBack = () => navigate(-1);
+  const location = useLocation();
+  const from = location.state?.from || '/movies';
+  const goBack = () => navigate(from);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -84,10 +92,14 @@ const MovieDetails = () => {
         <p>Additional information</p>
         <ul className="castReviews">
           <li>
-            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+            <Link state={{ from }} to={`/movies/${movieId}/cast`}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+            <Link state={{ from }} to={`/movies/${movieId}/reviews`}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </div>
